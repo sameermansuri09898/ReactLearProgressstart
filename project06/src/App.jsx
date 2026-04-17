@@ -1,121 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import Navbar from "./components/navbar";
+import Features from "./components/Features";
+import Footer from "./components/Footer";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div>
+      <Navbar />
+
+      {/* HERO */}
+      <section className="bg-gray-100 py-20">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center">
+          
+          <div className="md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
+              Rent Your Dream Car <br />
+              <span className="text-blue-600">Anytime, Anywhere</span>
+            </h1>
+
+            <p className="mt-4 text-gray-600">
+              Premium cars at affordable prices with easy booking.
+            </p>
+
+            <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
+              Explore Cars
+            </button>
+          </div>
+
+          <div className="md:w-1/2 mt-10 md:mt-0">
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+              className="rounded-xl shadow-lg"
+            />
+          </div>
+
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+      </section>
+
+      {/* CARS */}
+      <section className="py-16 text-center">
+        <h2 className="text-3xl font-bold">Popular Cars</h2>
+
+        <div className="grid md:grid-cols-3 gap-8 mt-10 px-4 max-w-7xl mx-auto">
+          {["BMW", "Audi", "Mercedes"].map((car, i) => (
+            <div key={i} className="bg-white shadow-lg rounded-xl overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1549924231-f129b911e442"
+                className="h-48 w-full object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold">{car}</h3>
+                <button className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+      </section>
+
+      {/* FEATURES COMPONENT */}
+      <Features />
+
+      {/* CTA */}
+      <section className="py-20 text-center">
+        <h2 className="text-3xl font-bold">Ready to Ride?</h2>
+        <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg">
+          Get Started
         </button>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {/* FOOTER COMPONENT */}
+      <Footer />
+    </div>
+  );
 }
-
-export default App
